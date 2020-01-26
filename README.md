@@ -1,2 +1,3 @@
-# actions-lint-docker
+# GitHub Actions: Lint Docker
+
 Docker container for GitHub actions lint CI
