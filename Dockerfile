@@ -18,8 +18,13 @@ COPY LICENSE README.md /
 COPY requirements.txt /tmp/
 
 RUN apk add --no-cache \
+    curl \
     gcc \
     git \
-    musl-dev && \
-    pip install --upgrade pip && \
+    musl-dev
+RUN pip install --upgrade pip && \
     pip install -r /tmp/requirements.txt
+
+RUN git clone --depth 1 https://github.com/AlwinW/actions-ci.git /tmp/actions-ci && \
+    mkdir -p /src/utils && \
+    cp /tmp/actions-ci/utils /src/utils
