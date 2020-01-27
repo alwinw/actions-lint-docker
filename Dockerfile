@@ -1,6 +1,3 @@
-# GitHub Action docker-based image
-# Not intended for local development
-
 FROM python:3.8.0-alpine3.10
 
 LABEL maintainer="alwinrwang@outlook.com"
@@ -25,6 +22,7 @@ RUN apk add --no-cache \
 RUN pip install --upgrade pip && \
     pip install -r /tmp/requirements.txt
 
-RUN git clone --depth 1 https://github.com/AlwinW/actions-ci.git /tmp/actions-ci && \
-    mkdir -p /src/utils && \
-    cp /tmp/actions-ci/utils /src/utils
+RUN git clone https://github.com/AlwinW/actions-ci.git /tmp/actions-ci --depth 1 --quiet && \
+    mkdir -p /src/utils && \ 
+    cp -r /tmp/actions-ci/utils /src && \
+    ls /src/utils
